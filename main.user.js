@@ -366,7 +366,8 @@
         const isSession = document.body.classList.contains("session-authentication");
         const isHomepage = pathname === '/' && site === 'github';
         const isProfile = document.body.classList.contains("page-profile") || metaLocation === '/<user-name>';
-        const isRepository = /\/<user-name>\/<repo-name>/.test(metaLocation);
+        const isRepository = /\/<user-name>\/<repo-name>/.test(metaLocation)
+            || !!document.head.querySelector('meta[name="octolytics-dimension-repository_nwo"]')?.content;
         const isOrganization = /\/<org-login>/.test(metaLocation) || /^\/(?:orgs|organizations)/.test(pathname);
 
         let pageType;
